@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale">
+    <title> Devfinder </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- FIRST SECTION -->
+    <section class="container intro">
+        <h1 class="white-text">devfinder</h1>
+
+        <div class="theme-box">
+            <button type="button" class="theme-switcher">
+                Light
+            </button>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="container form space-between">
+        <figure class="search-icon"></figure>
+        <div class="form-wrapper">
+            <input type="text" id="username-input" class="search-input-control" placeholder="Search Github username..." />
+        </div>
+        <button type="button" class="submit-btn white-text">Search</button>
+    </section>
+
+
+    <!-- MAIN SECTION -->
+    <main class="container hero">
+        <div class="hero-backdrop is-active  w-100 flex-center flex-column">
+            <h4 class="hero-backdrop-message">
+                To get started, search for a user!
+            </h4>
+        </div>
+        </div>
+        <div class="hero-content">
+            <figure class="user-avatar js-tilt" data-tilt>
+                <img class="user-avatar-image" src="./assets/images/avatar.png" alt="">
+            </figure>
+            <div class="user-info-wrapper w-100">
+                <div class="user-info-item-1 flex-start space-between align-center mb-1">
+                    <h1 class="user-name white-text">The octocat</h1>
+                    <h3 class="user-joined-at white-text half-opacity">Joined 25 Jan 2011</h3>
+                </div>
+
+                <div class="user-info-item-2 mb-3">
+                    <h3 class="user-username blue-text">@octat</h3>
+                </div>
+
+                <div class="user-info-item-3 mb-3 half-opacity">
+                    <p class="user-bio white-text">This profile has no bio</p>
+                </div>
+
+
+                <div class="user-info-item-4 flex-start mb-3 ">
+                    <div class="mr-6">
+                        <h4 class="half-opacity">Repos</h4>
+                        <span class="white-text user-stat user-repos">0</span>
+                    </div>
+
+                    <div class="mr-6">
+                        <h4 class="half-opacity">Followers</h4>
+                        <span class="white-text user-stat user-followers">0</span>
+                    </div>
+
+                    <div>
+                        <h4 class="half-opacity">Following</h4>
+                        <span class="white-text user-stat user-following">0</span>
+                    </div>
+                </div>
+
+                <div class="user-info-item-5">
+                    <p class="user-location white-text">San Francisco</p>
+                    <p class="user-social-network white-text half-opacity">Not available</p>
+                    <p class="user-github-link">
+                        <a class="white-text" href="#" target="_blank">https://github.com</a>
+                    </p>
+                    <p class="user-company white-text">@github</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        const tilt = $('.js-tilt').tilt({
+            scale: 1.1,
+        });
+    </script>
+</body>
+
+</html>

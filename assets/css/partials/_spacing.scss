@@ -1,0 +1,59 @@
+$gaps: 8px,
+16px,
+24px,
+32px,
+40px,
+48px,
+56px,
+64px,
+72px;
+$i: 0;
+@each $gap in $gaps {
+    $i: $i + 1;
+    .m-#{$i} {
+        margin: $gap;
+    }
+    .mt-#{$i} {
+        margin-top: $gap;
+    }
+    .mb-#{$i} {
+        margin-bottom: $gap;
+    }
+    .ml-#{$i} {
+        margin-left: $gap;
+    }
+    .mr-#{$i} {
+        margin-right: $gap;
+    }
+    .mx-#{$i} {
+        margin-right: $gap;
+        margin-left: $gap;
+    }
+    .my-#{$i} {
+        margin-top: $gap;
+        margin-bottom: $gap;
+    }
+    .p-#{$i} {
+        padding: $gap;
+    }
+    .pt-#{$i} {
+        padding-top: $gap;
+    }
+    .pb-#{$i} {
+        padding-bottom: $gap;
+    }
+    .pl-#{$i} {
+        padding-left: $gap;
+    }
+    .pr-#{$i} {
+        padding-right: $gap;
+    }
+    .px-#{$i} {
+        padding-right: $gap;
+        padding-left: $gap;
+    }
+    .py-#{$i} {
+        padding-top: $gap;
+        padding-bottom: $gap;
+    }
+}

@@ -1,0 +1,34 @@
+$white: #f1f1f1;
+$black: #1f1f1f;
+$green: green;
+$dark-green: #1c2321;
+$green-1: rgb(58, 90, 81);
+// ==================================
+// DARK MODE
+$btn: #0079FF;
+$btn-hover: #60ABFF;
+$bg: #141D2F;
+$bg-content: #1E2A47;
+$text: white;
+$text-alt: white;
+$shadow-xl: rgba(70, 88, 109, 0.15);
+$icon-bg: brightness(1000%);
+// LIGHT MODE
+$light-bg: #F6F8FF;
+$light-bg-content: #FEFEFE;
+$light-text: #95a6c0;
+$light-text-alt: #2B3442;
+$light-shadow-active: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+$light-shadow-inactive: 0px 16px 30px -10px rgba(0, 0, 0, 0.2);
+.blue-text {
+    color: $btn;
+    $light-icon-bg: brightness(100%);
+}
+
+.white-text {
+    color: $text;
+}
+
+.half-opacity {
+    opacity: 0.5;
+}

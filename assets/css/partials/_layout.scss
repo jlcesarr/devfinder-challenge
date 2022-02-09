@@ -1,0 +1,143 @@
+$container: 'container';
+.#{$container} {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 24px 36px;
+}
+
+.bg-light {
+    background-color: $light-bg;
+    .container.hero {
+        background-color: $light-bg-content;
+    }
+    .container.form {
+        background-color: $light-bg-content;
+    }
+    .white-text,
+    .user-bio {
+        color: $light-text-alt !important;
+    }
+}
+
+// INTRO CONTAINER
+.container.intro {
+    justify-content: space-between;
+}
+
+// FORM CONTAINER
+.container.form {
+    background-color: $bg-content;
+    border-radius: 10px;
+    padding: 8px 36px;
+    gap: 8px;
+    .search-icon {
+        height: 48px;
+        width: 48px;
+        background-color: $green;
+        border-radius: 10px;
+    }
+    .form-wrapper {
+        flex: 1;
+        .search-input-control {
+            font-size: 18px;
+            width: 100%;
+        }
+    }
+}
+
+// WIREFRAME HERO - MAIN SECTION
+.container.hero {
+    margin-top: 24px;
+    background-color: $bg-content;
+    border-radius: 10px;
+    max-height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container .hero-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    clip-path: circle(0% at right 0 bottom 0);
+    transition: .9s ease-in-out;
+}
+
+.container .hero-content.is-active {
+    clip-path: circle(100%)
+}
+
+.hero-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip-path: circle(0% at bottom 0 right 0);
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 99;
+    background-color: inherit;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    transition: .9s ease-in-out;
+}
+
+// USER AVATAR
+// .user-avatar,
+// .user-info-wrapper {
+//     display: none;
+// }
+.hero-backdrop.is-active {
+    clip-path: circle(100%);
+    pointer-events: all;
+    // border-radius: 10px;
+}
+
+.user-avatar {
+    height: 96px;
+    width: 96px;
+    background-color: $green;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 3 0 auto;
+}
+
+// USER INFO
+.user-info-wrapper {
+    flex: 1 1 auto;
+}
+
+.user-info-item-4 {
+    background-color: $bg;
+    border-radius: 10px;
+    padding: 16px 16px;
+    max-width: 100%;
+}
+
+.user-info-item-5 {
+    display: grid;
+    gap: 8px;
+    grid-template-areas: 'user-location user-social-network ' 'user-github-link user-company';
+}
+
+.user-location {
+    grid-area: user-location
+}
+
+.user-social-network {
+    grid-area: user-social-network
+}
+
+.user-github-link {
+    grid-area: user-github-link
+}
+
+.user-company {
+    grid-area: user-company
+}

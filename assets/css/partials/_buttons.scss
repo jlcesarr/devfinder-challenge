@@ -1,0 +1,17 @@
+.submit-btn {
+    background: $btn;
+    padding: 16px 16px;
+    border-radius: 10px;
+    display: block;
+    height: 100%;
+    color: $white;
+    cursor: pointer;
+    transition: .7s ease-in-out;
+    &:hover {
+        background-color: $btn-hover;
+    }
+}
+
+.theme-switcher {
+    cursor: pointer;
+}
