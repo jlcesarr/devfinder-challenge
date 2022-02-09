@@ -1,3 +1,5 @@
+@import "vendor/functions";
+
 *,
 *::before,
 *::after {
@@ -6,6 +8,7 @@
     box-sizing: border-box;
     font-family: 'Space Mono', sans-serif;
 }
+
 
 @import "partials/colors";
 @import "partials/generics";

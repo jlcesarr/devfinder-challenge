@@ -1,11 +1,13 @@
 .submit-btn {
     background: $btn;
-    padding: 16px 16px;
+    padding: 8px 16px;
     border-radius: 10px;
     display: block;
-    height: 100%;
+    height: 85%;
     color: $white;
     cursor: pointer;
+    position: absolute;
+    right: 8px;
     transition: .7s ease-in-out;
     &:hover {
         background-color: $btn-hover;
@@ -14,4 +16,12 @@
 
 .theme-switcher {
     cursor: pointer;
+}
+
+// LINKS
+.user-github-link {
+    transition: .5s ease;
+    &:hover {
+        color: darken($text, 30%)
+    }
 }

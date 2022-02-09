@@ -2,21 +2,27 @@ const apiBase = "https://api.github.com"
 const apiUsersEndpoint = "users"
 
 
+
+let isLightTheme = false;
 const $themeSwitcherButton = document.querySelector(".theme-switcher")
 $themeSwitcherButton.onclick = () => {
     document.body.classList.toggle('bg-light')
 }
 
 
-const $submitButton = document.querySelector(".submit-btn")
+const $searchButton = document.querySelector(".submit-btn")
 const $usernameInput = document.getElementById("username-input")
+
+
+
 const $heroContainer = document.querySelector(".hero")
+    // ========= HERO BACKDROP =============
 const $heroBackDrop = $heroContainer.querySelector(".hero-backdrop")
 const $heroBackDropMessage = $heroBackDrop.querySelector('.hero-backdrop-message');
+
+
 const $heroContent = $heroContainer.querySelector('.hero-content')
-
-
-// ========= WIREFRAME HERO COMPONENTS =============
+    // ========= HERO CONTENT ELEMENTS =============
 const $userAvatarEl = $heroContainer.querySelector(".user-avatar-image")
 const $userNameEl = $heroContainer.querySelector(".user-name")
 const $userJoinedAtEl = $heroContainer.querySelector(".user-joined-at")
@@ -27,23 +33,26 @@ const $userFollowersEl = $heroContainer.querySelector(".user-followers")
 const $userReposEl = $heroContainer.querySelector(".user-repos")
 const $userLocationEl = $heroContainer.querySelector(".user-location")
 const $userSocialNetworkEl = $heroContainer.querySelector(".user-social-network")
-const $userGithubProfileEl = $heroContainer.querySelector(".user-github-link a")
+const $userGithubProfileEl = $heroContainer.querySelector(".user-github-link")
 const $userCompanyEl = $heroContainer.querySelector(".user-company")
 
 const setElementValue = (attr, el, value, altValue) => {
+    try {
 
-    if (!value) {
-        el[attr] = altValue;
-        el.classList.add('half-opacity')
-        return;
-    }
+        if (!value) {
+            el[attr] = altValue;
+            el.classList.add('half-opacity')
+            return;
+        }
 
+        el.classList.remove('half-opacity')
+        el[attr] = value
 
-    el.classList.remove('half-opacity')
-    el[attr] = value
-
-    if (el.tagName.toLowerCase() == "a") {
-        el.href = value
+        if (el.tagName.toLowerCase() == "a") {
+            el.href = value
+        }
+    } catch (e) {
+        console.error(e)
     }
 }
 
@@ -84,32 +93,35 @@ const setUserInfo = (user) => {
 
 
 let currentUser = undefined;
-
-
-$submitButton.addEventListener('click', (e) => {
+$searchButton.addEventListener('click', (e) => {
     (async() => {
-        if (!$usernameInput.value || $usernameInput.value == currentUser) return;
+        const usernameInputValue = $usernameInput.value
+
+        if (!usernameInputValue || usernameInputValue == currentUser) return;
 
 
+        // hide current hero content
         $heroContent.classList.remove('is-active')
 
-        await new Promise((resolve, reject) => {
-            setTimeout(() => resolve(), 700)
-        })
 
+        // waits clip-path transition duration
+        await new Promise((resolve, reject) => { setTimeout(() => resolve(), 600) })
 
-        const apiResponse = await (await fetch(`${apiBase}/${apiUsersEndpoint}/${$usernameInput.value}`)).json()
+        const apiResponse = await (await fetch(`${apiBase}/${apiUsersEndpoint}/${usernameInputValue}`)).json()
         if (!apiResponse.id) {
             $heroBackDropMessage.innerHTML = `Oops, user was not found!`
             $heroBackDrop.classList.add('is-active')
             return;
         }
 
+        // hide backdrop 
         $heroBackDrop.classList.remove('is-active')
 
 
+        // set elements values
         setUserInfo(apiResponse)
 
+        // show hero content
         $heroContent.classList.add('is-active')
 
         currentUser = $usernameInput.value;

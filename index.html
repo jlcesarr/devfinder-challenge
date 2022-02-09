@@ -35,26 +35,26 @@
     </section>
 
 
-    <!-- MAIN SECTION -->
+    <!-- HERO CONTAINER -->
     <main class="container hero">
-        <div class="hero-backdrop is-active  w-100 flex-center flex-column">
+        <div class="hero-backdrop is-active w-100 flex-center flex-column">
             <h4 class="hero-backdrop-message">
                 To get started, search for a user!
             </h4>
         </div>
-        </div>
-        <div class="hero-content">
+        <section class="hero-content">
             <figure class="user-avatar js-tilt" data-tilt>
                 <img class="user-avatar-image" src="./assets/images/avatar.png" alt="">
             </figure>
-            <div class="user-info-wrapper w-100">
+            <div class="user-info-wrapper  w-100">
+
                 <div class="user-info-item-1 flex-start space-between align-center mb-1">
-                    <h1 class="user-name white-text">The octocat</h1>
-                    <h3 class="user-joined-at white-text half-opacity">Joined 25 Jan 2011</h3>
+                    <h2 class="user-name white-text">The Octocat</h2>
+                    <h4 class="user-joined-at white-text half-opacity">Joined 25 Jan 2011</h4>
                 </div>
 
                 <div class="user-info-item-2 mb-3">
-                    <h3 class="user-username blue-text">@octat</h3>
+                    <h4 class="user-username blue-text">@octat</h4>
                 </div>
 
                 <div class="user-info-item-3 mb-3 half-opacity">
@@ -62,19 +62,19 @@
                 </div>
 
 
-                <div class="user-info-item-4 flex-start mb-3 ">
+                <div class="user-info-item-4 flex-start mb-3">
                     <div class="mr-6">
-                        <h4 class="half-opacity">Repos</h4>
+                        <h5 class="half-opacity">Repos</h5>
                         <span class="white-text user-stat user-repos">0</span>
                     </div>
 
                     <div class="mr-6">
-                        <h4 class="half-opacity">Followers</h4>
+                        <h5 class="half-opacity">Followers</h5>
                         <span class="white-text user-stat user-followers">0</span>
                     </div>
 
                     <div>
-                        <h4 class="half-opacity">Following</h4>
+                        <h5 class="half-opacity">Following</h5>
                         <span class="white-text user-stat user-following">0</span>
                     </div>
                 </div>
@@ -82,13 +82,13 @@
                 <div class="user-info-item-5">
                     <p class="user-location white-text">San Francisco</p>
                     <p class="user-social-network white-text half-opacity">Not available</p>
-                    <p class="user-github-link">
-                        <a class="white-text" href="#" target="_blank">https://github.com</a>
+                    <p class="user-github-profile">
+                        <a class="user-github-link white-text" href="#" target="_blank">https://github.com</a>
                     </p>
                     <p class="user-company white-text">@github</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
 
@@ -100,7 +100,8 @@
 
     <script>
         const tilt = $('.js-tilt').tilt({
-            scale: 1.1,
+            scale: 1.15,
+            perspective: 2000,
         });
     </script>
 </body>

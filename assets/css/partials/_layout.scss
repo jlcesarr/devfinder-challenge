@@ -1,3 +1,35 @@
+$container-xl: 1440px;
+$container-l: 1140px;
+$container-m: 960px;
+$container-s: 540px;
+@mixin responsive($device) {
+    @if $device==xl {
+        @media screen and (min-width: $container-xl) {
+            @content;
+        }
+    }
+    @else if $device==l {
+        @media screen and (min-width: $container-l) and (max-width: $container-xl) {
+            @content;
+        }
+    }
+    @else if $device==m {
+        @media screen and (min-width: $container-m) and (max-width: $container-l) {
+            @content;
+        }
+    }
+    @else if $device==s {
+        @media screen and (max-width: $container-m) {
+            @content;
+        }
+    }
+    @else if $device==xs {
+        @media screen and (max-width: $container-s) {
+            @content;
+        }
+    }
+}
+
 $container: 'container';
 .#{$container} {
     max-width: 800px;
@@ -31,16 +63,23 @@ $container: 'container';
 .container.form {
     background-color: $bg-content;
     border-radius: 10px;
-    padding: 8px 36px;
+    padding: 16px 36px;
     gap: 8px;
+    position: relative;
     .search-icon {
-        height: 48px;
-        width: 48px;
-        background-color: $green;
+        height: 28px;
+        width: 28px;
+        background-image: url(../images/icon-search.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         border-radius: 10px;
+        position: absolute;
+        left: 16px;
     }
     .form-wrapper {
         flex: 1;
+        margin-left: rem-calc(18);
         .search-input-control {
             font-size: 18px;
             width: 100%;
@@ -55,6 +94,7 @@ $container: 'container';
     border-radius: 10px;
     max-height: 600px;
     position: relative;
+    // display: grid;
     overflow: hidden;
 }
 
@@ -64,7 +104,7 @@ $container: 'container';
     gap: 2rem;
     width: 100%;
     clip-path: circle(0% at right 0 bottom 0);
-    transition: .9s ease-in-out;
+    transition: .6s ease-in-out;
 }
 
 .container .hero-content.is-active {
@@ -85,7 +125,7 @@ $container: 'container';
     text-align: center;
     justify-content: center;
     display: flex;
-    transition: .9s ease-in-out;
+    transition: .6s ease-in-out;
 }
 
 // USER AVATAR
@@ -123,7 +163,8 @@ $container: 'container';
 .user-info-item-5 {
     display: grid;
     gap: 8px;
-    grid-template-areas: 'user-location user-social-network ' 'user-github-link user-company';
+    row-gap: 16px;
+    grid-template-areas: 'user-location user-social-network ' 'user-github-profile user-company';
 }
 
 .user-location {
@@ -134,8 +175,8 @@ $container: 'container';
     grid-area: user-social-network
 }
 
-.user-github-link {
-    grid-area: user-github-link
+.user-github-profile {
+    grid-area: user-github-profile
 }
 
 .user-company {

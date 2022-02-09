@@ -1,0 +1,78 @@
+@mixin typeface-1($size, $device: desktop) {
+    @if $size==h1 and $device==desktop {
+        font-size: rem-calc(30);
+        line-height: 110%;
+    }
+    @else if $size==h1 and $device==mobile {
+        font-size: rem-calc(24);
+        line-height: 120%;
+    }
+    @else if $size==h2 and $device==desktop {
+        font-size: rem-calc(24);
+        line-height: 115%
+    }
+    @else if $size==h2 and $device==mobile {
+        font-size: rem-calc(20);
+        line-height: 125%;
+    }
+    @else if $size==h3 and $device==desktop {
+        font-size: rem-calc(22);
+        line-height: 130%
+    }
+    @else if $size==h3 and $device==mobile {
+        font-size: rem-calc(18);
+        line-height: 135%;
+    }
+    @else if $size==h4 and $device==desktop {
+        font-size: rem-calc(18);
+        line-height: 140%
+    }
+    @else if $size==h4 and $device==mobile {
+        font-size: rem-calc(16);
+        line-height: 150%;
+    }
+    @else if $size==h5 and $device==desktop {
+        font-size: rem-calc(16);
+        line-height: 145%;
+    }
+    @else if($size==h5 and $device==mobile) {
+        font-size: rem-calc(15);
+        line-height: 150%;
+    }
+}
+
+h1 {
+    @include typeface-1(h1, desktop);
+    @include responsive(s) {
+        @include typeface-1(h1, mobile);
+    }
+}
+
+h2 {
+    @include typeface-1(h2, desktop);
+    @include responsive(s) {
+        @include typeface-1(h2, mobile);
+    }
+}
+
+h3 {
+    @include typeface-1(h3, desktop);
+    @include responsive(s) {
+        @include typeface-1(h3, mobile);
+    }
+}
+
+h4 {
+    @include typeface-1(h4, desktop);
+    @include responsive(s) {
+        @include typeface-1(h4, mobile);
+    }
+}
+
+p,
+h5 {
+    @include typeface-1(5, desktop);
+    @include responsive(s) {
+        @include typeface-1(h5, mobile);
+    }
+}
