@@ -70,6 +70,7 @@ h4 {
 }
 
 p,
+label,
 h5 {
     @include typeface-1(5, desktop);
     @include responsive(s) {

@@ -1,6 +1,6 @@
 $container-xl: 1440px;
 $container-l: 1140px;
-$container-m: 960px;
+$container-m: 975px;
 $container-s: 540px;
 @mixin responsive($device) {
     @if $device==xl {
@@ -38,8 +38,11 @@ $container-name: 'container';
     width: 100%;
     align-items: center;
     padding: 36px 36px;
+    @include responsive(s) {
+        max-width: calc(80vw - 20px);
+    }
     @include responsive(xs) {
-        max-width: 350px;
+        max-width: 90vw;
         padding: 36px 18px;
     }
 }
@@ -112,7 +115,9 @@ $container-name: 'container';
     transition: clip-path .6s ease-in-out;
     @include responsive(s) {
         grid-template-areas: 'user-avatar item-1' 'item-2 item-2' 'item-3 item-3' 'item-4 item-4' 'item-5 item-5';
-        gap: 8px;
+        row-gap: 8px;
+        column-gap: 30px;
+        align-items: center;
     }
 }
 
@@ -174,10 +179,17 @@ $container-name: 'container';
     grid-area: item-4;
     background-color: $bg;
     border-radius: 10px;
-    max-width: 100%;
+    // max-width: 80%;
+    // min-width: max-content;
+    // width: minmax(70%, 80%);
+    width: 100%;
     padding: 16px 16px;
     @include responsive(xs) {
         padding: 16px 5px;
+        text-align: center;
+        & label {
+            font-size: 3.2vmin;
+        }
     }
 }
 
