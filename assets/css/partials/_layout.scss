@@ -114,40 +114,33 @@ $container-name: 'container';
         grid-template-areas: 'user-avatar item-1' 'item-2 item-2' 'item-3 item-3' 'item-4 item-4' 'item-5 item-5';
         gap: 8px;
     }
-    .user-info-item-1 {
-        grid-area: item-1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+}
+
+.hero-content-item-1 {
+    grid-area: item-1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    @include responsive(s) {
+        grid-template-columns: auto;
+    }
+    .user-joined-at {
+        justify-self: end;
         @include responsive(s) {
-            grid-template-columns: auto;
-        }
-        .user-joined-at {
-            justify-self: end;
-            @include responsive(s) {
-                justify-self: initial;
-                grid-row: 3;
-            }
+            justify-self: initial;
+            grid-row: 3;
         }
     }
-    .user-info-item-2 {
-        grid-area: item-2;
-    }
-    .user-info-item-3 {
-        grid-area: item-3;
-        @include responsive(xs) {
-            max-width: 400px;
-        }
-    }
-    .user-info-item-4 {
-        grid-area: item-4;
-        @include responsive(xs) {
-            padding: 16px 8px;
-            max-width: 100%;
-        }
-    }
-    .user-info-item-5 {
-        grid-area: item-5;
+}
+
+.hero-content-item-2 {
+    grid-area: item-2;
+}
+
+.hero-content-item-3 {
+    grid-area: item-3;
+    @include responsive(xs) {
+        max-width: 400px;
     }
 }
 
@@ -178,13 +171,18 @@ $container-name: 'container';
 }
 
 .hero-content-item-4 {
+    grid-area: item-4;
     background-color: $bg;
     border-radius: 10px;
-    padding: 16px 16px;
     max-width: 100%;
+    padding: 16px 16px;
+    @include responsive(xs) {
+        padding: 16px 5px;
+    }
 }
 
-.user-info-item-5 {
+.hero-content-item-5 {
+    grid-area: item-5;
     display: grid;
     gap: 8px;
     row-gap: 16px;
