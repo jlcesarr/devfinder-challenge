@@ -2,14 +2,6 @@ const apiBase = "https://api.github.com"
 const apiUsersEndpoint = "users"
 
 
-
-let isLightTheme = false;
-const $themeSwitcherButton = document.querySelector(".theme-switcher")
-$themeSwitcherButton.onclick = () => {
-    document.body.classList.toggle('bg-light')
-}
-
-
 const $searchButton = document.querySelector(".submit-btn")
 const $usernameInput = document.getElementById("username-input")
 
@@ -31,21 +23,25 @@ const $userBioEl = $heroContainer.querySelector(".user-bio")
 const $userFollowingEl = $heroContainer.querySelector(".user-following")
 const $userFollowersEl = $heroContainer.querySelector(".user-followers")
 const $userReposEl = $heroContainer.querySelector(".user-repos")
-const $userLocationEl = $heroContainer.querySelector(".user-location")
-const $userSocialNetworkEl = $heroContainer.querySelector(".user-social-network")
-const $userGithubProfileEl = $heroContainer.querySelector(".user-github-link")
-const $userCompanyEl = $heroContainer.querySelector(".user-company")
+const $userLocationEl = $heroContainer.querySelector(".user-location .js-word")
+const $userSocialNetworkEl = $heroContainer.querySelector(".user-social-network .js-word")
+const $userGithubProfileEl = $heroContainer.querySelector(".user-github-link .js-word")
+const $userCompanyEl = $heroContainer.querySelector(".user-company .js-word")
 
 const setElementValue = (attr, el, value, altValue) => {
     try {
 
         if (!value) {
             el[attr] = altValue;
-            el.classList.add('half-opacity')
+            if (!el.classList.contains('js-word')) {
+                el.classList.add('half-opacity')
+            }
+            el.parentElement.classList.add('half-opacity')
             return;
         }
 
         el.classList.remove('half-opacity')
+        el.parentElement.classList.remove('half-opacity')
         el[attr] = value
 
         if (el.tagName.toLowerCase() == "a") {
@@ -114,7 +110,7 @@ $searchButton.addEventListener('click', (e) => {
             return;
         }
 
-        // hide backdrop 
+        // hide container backdrop 
         $heroBackDrop.classList.remove('is-active')
 
 
@@ -127,3 +123,62 @@ $searchButton.addEventListener('click', (e) => {
         currentUser = $usernameInput.value;
     })()
 })
+
+
+
+// THEME SWITCHER
+let isLightTheme = false;
+const $themeSwitcherButton = document.querySelector(".theme-switcher")
+const $themeSwitcherBox = document.querySelector(".theme-box")
+
+$themeSwitcherButton.onclick = () => {
+
+
+    isLightTheme = !isLightTheme
+
+
+    changeTheme(isLightTheme ? "light" : "dark")
+}
+
+
+const changeTheme = (theme) => {
+    let bgColor,
+        textColor,
+        bgContent,
+        textAltColor;
+
+    switch (theme) {
+        case "light":
+            bgColor = "#F6F8FF";
+            textColor = "#95a6c0";
+            bgContent = "#FEFEFE";
+            textAltColor = "#2B3442";
+            fillColorSVG = "#4b6a9b"
+
+
+            $themeSwitcherButton.innerHTML = "Dark"
+            $themeSwitcherBox.classList.remove('light-icon')
+            $themeSwitcherBox.classList.add('dark-icon')
+            break;
+        case "dark":
+            bgColor = "#141D2F";
+            textColor = "#FFFFFF";
+            bgContent = "#1E2A47";
+            textAltColor = "#FFFFFF";
+            fillColorSVG = "#FFFFFF"
+
+
+            $themeSwitcherButton.innerHTML = "Light"
+            $themeSwitcherBox.classList.remove('dark-icon')
+            $themeSwitcherBox.classList.add('light-icon')
+            break;
+    }
+
+
+    document.querySelector('body').style.setProperty('--bg', bgColor);
+    document.querySelector('body').style.setProperty('--bg-content', bgContent);
+    document.querySelector('body').style.setProperty('--text', textColor);
+    document.querySelector('body').style.setProperty('--text-alt', textAltColor);
+    document.querySelector('body').style.setProperty('--fill-svg', fillColorSVG);
+
+}

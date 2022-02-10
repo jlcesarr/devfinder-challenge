@@ -30,27 +30,17 @@ $container-s: 540px;
     }
 }
 
-$container: 'container';
-.#{$container} {
+$container-name: 'container';
+.#{$container-name} {
     max-width: 800px;
     margin: 0 auto;
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 24px 36px;
-}
-
-.bg-light {
-    background-color: $light-bg;
-    .container.hero {
-        background-color: $light-bg-content;
-    }
-    .container.form {
-        background-color: $light-bg-content;
-    }
-    .white-text,
-    .user-bio {
-        color: $light-text-alt !important;
+    padding: 36px 36px;
+    @include responsive(xs) {
+        max-width: 350px;
+        padding: 36px 18px;
     }
 }
 
@@ -61,10 +51,10 @@ $container: 'container';
 
 // FORM CONTAINER
 .container.form {
-    background-color: $bg-content;
     border-radius: 10px;
     padding: 16px 36px;
     gap: 8px;
+    background-color: var(--bg-content);
     position: relative;
     .search-icon {
         height: 28px;
@@ -83,6 +73,9 @@ $container: 'container';
         .search-input-control {
             font-size: 18px;
             width: 100%;
+            @include responsive(xs) {
+                font-size: 15px;
+            }
         }
     }
 }
@@ -90,21 +83,75 @@ $container: 'container';
 // WIREFRAME HERO - MAIN SECTION
 .container.hero {
     margin-top: 24px;
-    background-color: $bg-content;
+    background-color: var(--bg-content);
     border-radius: 10px;
     max-height: 600px;
     position: relative;
-    // display: grid;
     overflow: hidden;
 }
 
+.user-avatar {
+    grid-area: user-avatar;
+    height: 96px;
+    width: 96px;
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 3 0 auto;
+}
+
 .container .hero-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
+    display: grid;
+    align-items: start;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'user-avatar item-1' '. item-2' '. item-3' '. item-4' '. item-5';
+    column-gap: 16px;
     width: 100%;
     clip-path: circle(0% at right 0 bottom 0);
-    transition: .6s ease-in-out;
+    transition: clip-path .6s ease-in-out;
+    @include responsive(s) {
+        grid-template-areas: 'user-avatar item-1' 'item-2 item-2' 'item-3 item-3' 'item-4 item-4' 'item-5 item-5';
+        gap: 8px;
+    }
+    .user-info-item-1 {
+        grid-area: item-1;
+    }
+    .user-info-item-2 {
+        grid-area: item-2;
+    }
+    .user-info-item-3 {
+        grid-area: item-3;
+        @include responsive(xs) {
+            max-width: 400px;
+        }
+    }
+    .user-info-item-4 {
+        grid-area: item-4;
+        @include responsive(xs) {
+            padding: 16px 8px;
+            max-width: 100%;
+        }
+    }
+    .user-info-item-5 {
+        grid-area: item-5;
+    }
+}
+
+.user-info-item-1 {
+    grid-area: item-1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    @include responsive(s) {
+        grid-template-columns: auto;
+    }
+    .user-joined-at {
+        justify-self: end;
+        @include responsive(s) {
+            justify-self: initial;
+            grid-row: 3;
+        }
+    }
 }
 
 .container .hero-content.is-active {
@@ -125,27 +172,13 @@ $container: 'container';
     text-align: center;
     justify-content: center;
     display: flex;
-    transition: .6s ease-in-out;
+    transition: clip-path .6s ease-in-out;
 }
 
-// USER AVATAR
-// .user-avatar,
-// .user-info-wrapper {
-//     display: none;
-// }
 .hero-backdrop.is-active {
     clip-path: circle(100%);
     pointer-events: all;
     // border-radius: 10px;
-}
-
-.user-avatar {
-    height: 96px;
-    width: 96px;
-    background-color: $green;
-    border-radius: 50%;
-    overflow: hidden;
-    flex: 3 0 auto;
 }
 
 // USER INFO
@@ -165,6 +198,9 @@ $container: 'container';
     gap: 8px;
     row-gap: 16px;
     grid-template-areas: 'user-location user-social-network ' 'user-github-profile user-company';
+    @include responsive(xs) {
+        grid-template-areas: 'user-location' 'user-social-network' 'user-github-profile' 'user-company';
+    }
 }
 
 .user-location {
@@ -181,4 +217,41 @@ $container: 'container';
 
 .user-company {
     grid-area: user-company
+}
+
+.theme-box {
+    position: relative;
+    .theme-switcher {
+        margin-right: 32px;
+    }
+    &.light-icon {
+        &::after {
+            content: '';
+            position: absolute;
+            vertical-align: middle;
+            top: 0;
+            right: 0;
+            background-position: center right;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('../images/icon-sun.svg');
+            background-repeat: no-repeat;
+        }
+    }
+    &.dark-icon {
+        &::after {
+            content: '';
+            position: absolute;
+            vertical-align: middle;
+            background-position: center right;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('../images/icon-moon.svg');
+            background-repeat: no-repeat;
+        }
+    }
 }

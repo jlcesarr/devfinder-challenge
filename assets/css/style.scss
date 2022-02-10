@@ -1,14 +1,11 @@
 @import "vendor/functions";
-
 *,
 *::before,
 *::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Space Mono', sans-serif;
 }
-
 
 @import "partials/colors";
 @import "partials/generics";
@@ -17,20 +14,33 @@
 @import "partials/icons";
 @import "partials/typography";
 @import "partials/buttons";
+:root {
+    --btn: #0079FF;
+    --btn-hover: #60ABFF;
+    --bg: #141D2F;
+    --bg-content: #1E2A47;
+    --text: white;
+    --text-alt: white;
+    --shadow-xl: rgba(70, 88, 109, 0.15);
+    --fill-svg: #4b6a9b;
+}
+
 body {
     height: 100vh;
     display: flex;
     width: 100%;
     flex-direction: column;
     justify-content: center;
-    background-color: $bg;
-    color: $text;
-    transition: background-color .7s ease;
+    background-color: var(--bg);
+    color: var(--text);
+    // transition: background-color .7s ease;
+    font-family: 'Space Mono', sans-serif;
 }
 
 a {
     display: block;
     text-decoration: none;
+    color: unset;
 }
 
 input,
@@ -38,7 +48,6 @@ button {
     background: transparent;
     border: none;
     outline: none;
-    color: #ccc;
 }
 
 img,
@@ -47,7 +56,15 @@ svg {
     width: 100%;
 }
 
+.search-input-control {
+    color: var(--text-alt);
+}
+
 ::placeholder {
-    color: #ccc;
+    color: var(--text-alt);
     opacity: 1;
+}
+
+.text-alt {
+    color: var(--text-alt);
 }

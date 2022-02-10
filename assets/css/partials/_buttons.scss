@@ -4,7 +4,7 @@
     border-radius: 10px;
     display: block;
     height: 85%;
-    color: $white;
+    color: #ffffff;
     cursor: pointer;
     position: absolute;
     right: 8px;
@@ -16,6 +16,10 @@
 
 .theme-switcher {
     cursor: pointer;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 2px;
 }
 
 // LINKS
