@@ -6,7 +6,6 @@ const $searchButton = document.querySelector(".submit-btn")
 const $usernameInput = document.getElementById("username-input")
 
 
-
 const $heroContainer = document.querySelector(".hero")
     // ========= HERO BACKDROP =============
 const $heroBackDrop = $heroContainer.querySelector(".hero-backdrop")
@@ -132,11 +131,7 @@ const $themeSwitcherButton = document.querySelector(".theme-switcher")
 const $themeSwitcherBox = document.querySelector(".theme-box")
 
 $themeSwitcherButton.onclick = () => {
-
-
     isLightTheme = !isLightTheme
-
-
     changeTheme(isLightTheme ? "light" : "dark")
 }
 
@@ -174,11 +169,9 @@ const changeTheme = (theme) => {
             break;
     }
 
-
     document.querySelector('body').style.setProperty('--bg', bgColor);
     document.querySelector('body').style.setProperty('--bg-content', bgContent);
     document.querySelector('body').style.setProperty('--text', textColor);
     document.querySelector('body').style.setProperty('--text-alt', textAltColor);
     document.querySelector('body').style.setProperty('--fill-svg', fillColorSVG);
-
 }

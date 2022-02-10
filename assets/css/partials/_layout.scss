@@ -116,6 +116,19 @@ $container-name: 'container';
     }
     .user-info-item-1 {
         grid-area: item-1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        @include responsive(s) {
+            grid-template-columns: auto;
+        }
+        .user-joined-at {
+            justify-self: end;
+            @include responsive(s) {
+                justify-self: initial;
+                grid-row: 3;
+            }
+        }
     }
     .user-info-item-2 {
         grid-area: item-2;
@@ -135,23 +148,6 @@ $container-name: 'container';
     }
     .user-info-item-5 {
         grid-area: item-5;
-    }
-}
-
-.user-info-item-1 {
-    grid-area: item-1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    @include responsive(s) {
-        grid-template-columns: auto;
-    }
-    .user-joined-at {
-        justify-self: end;
-        @include responsive(s) {
-            justify-self: initial;
-            grid-row: 3;
-        }
     }
 }
 
@@ -179,15 +175,9 @@ $container-name: 'container';
 .hero-backdrop.is-active {
     clip-path: circle(100%);
     pointer-events: all;
-    // border-radius: 10px;
 }
 
-// USER INFO
-.user-info-wrapper {
-    flex: 1 1 auto;
-}
-
-.user-info-item-4 {
+.hero-content-item-4 {
     background-color: $bg;
     border-radius: 10px;
     padding: 16px 16px;
@@ -202,22 +192,18 @@ $container-name: 'container';
     @include responsive(xs) {
         grid-template-areas: 'user-location' 'user-social-network' 'user-github-profile' 'user-company';
     }
-}
-
-.user-location {
-    grid-area: user-location
-}
-
-.user-social-network {
-    grid-area: user-social-network
-}
-
-.user-github-profile {
-    grid-area: user-github-profile
-}
-
-.user-company {
-    grid-area: user-company
+    .user-location {
+        grid-area: user-location
+    }
+    .user-social-network {
+        grid-area: user-social-network
+    }
+    .user-github-profile {
+        grid-area: user-github-profile
+    }
+    .user-company {
+        grid-area: user-company
+    }
 }
 
 .theme-box {
